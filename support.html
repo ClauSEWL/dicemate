@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DiceMate Support</title>
+<meta name="description" content="Help with DiceMate: Dice Chess: the rules, ratings and placement, rooms and codes, purchases, the DiceMate Club, deleting your account and contact.">
+<meta name="color-scheme" content="light dark">
+<style>
+:root {
+  --paper: #f6ecd9;
+  --card: #fffaf0;
+  --ink: #3b2a1a;
+  --muted: #7a6450;
+  --line: #e2d1b3;
+  --accent: #a2462c;
+  --gold: #b7862c;
+  --felt: #2f5d46;
+  --shadow: 0 1px 0 rgba(255,255,255,.6) inset, 0 6px 18px rgba(80,50,20,.10);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1d140d;
+    --card: #2a1d13;
+    --ink: #f1e4cc;
+    --muted: #bfa888;
+    --line: #47331f;
+    --accent: #e48a63;
+    --gold: #e0b45a;
+    --felt: #7fbf9c;
+    --shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 6px 18px rgba(0,0,0,.35);
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--paper);
+  background-image: radial-gradient(circle at 20% 0%, rgba(183,134,44,.10), transparent 45%),
+                    radial-gradient(circle at 100% 30%, rgba(162,70,44,.07), transparent 40%);
+  color: var(--ink);
+  font: 17px/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+}
+.wrap { max-width: 760px; margin: 0 auto; padding: 28px 16px 64px; }
+header.top { display: flex; align-items: center; gap: 14px; margin-bottom: 8px; }
+.die {
+  width: 44px; height: 44px; flex: none; border-radius: 10px; background: var(--card);
+  border: 1px solid var(--line); box-shadow: var(--shadow);
+  display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: repeat(3, 1fr); padding: 7px;
+}
+.die i { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); place-self: center; }
+.brand { font: 600 15px/1.2 ui-serif, "Iowan Old Style", Georgia, serif; letter-spacing: .04em; color: var(--muted); text-transform: uppercase; }
+h1, h2, h3 { font-family: ui-serif, "Iowan Old Style", "Palatino Linotype", Georgia, serif; line-height: 1.25; }
+h1 { font-size: clamp(30px, 7vw, 42px); margin: 6px 0 4px; }
+h2 { font-size: 23px; margin: 36px 0 10px; padding-bottom: 6px; border-bottom: 2px dotted var(--line); }
+h3 { font-size: 18px; margin: 20px 0 6px; }
+p, li { overflow-wrap: anywhere; }
+.lede { color: var(--muted); margin-top: 0; }
+a { color: var(--accent); text-underline-offset: 2px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; box-shadow: var(--shadow); margin: 18px 0; }
+.card.felt { border-left: 6px solid var(--felt); }
+.card h2 { border: 0; margin-top: 0; padding: 0; }
+ul { padding-left: 1.2em; }
+li { margin: 4px 0; }
+.table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.table th, .table td { text-align: left; vertical-align: top; padding: 10px 8px; border-bottom: 1px solid var(--line); }
+.table th { font-weight: 600; color: var(--muted); font-size: 13px; text-transform: uppercase; letter-spacing: .05em; }
+.scroll { overflow-x: auto; }
+@media (max-width: 560px) {
+  .table thead { display: none; }
+  .table, .table tbody, .table tr, .table td { display: block; width: 100%; }
+  .table tr { padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .table td { border: 0; padding: 2px 0; }
+  .table td:first-child { font-weight: 600; }
+  .table td[data-label]::before { content: attr(data-label) ": "; color: var(--muted); font-size: 13px; }
+}
+code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .9em; background: rgba(183,134,44,.15); padding: 1px 5px; border-radius: 5px; }
+nav.toc { columns: 2 220px; font-size: 15px; }
+nav.toc a { text-decoration: none; }
+footer { margin-top: 48px; color: var(--muted); font-size: 14px; border-top: 2px dotted var(--line); padding-top: 14px; }
+footer a { margin-right: 14px; }
+</style>
+<style>
+details { background: var(--card); border: 1px solid var(--line); border-radius: 14px; margin: 10px 0; box-shadow: var(--shadow); }
+summary { cursor: pointer; list-style: none; padding: 14px 44px 14px 18px; font-weight: 600; position: relative; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 18px; top: 50%; transform: translateY(-50%); font-size: 22px; color: var(--accent); }
+details[open] summary::after { content: "–"; }
+details > div { padding: 0 18px 14px; }
+details > div > :first-child { margin-top: 0; }
+.faces { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 8px; margin: 10px 0; }
+.face { border: 1px solid var(--line); border-radius: 10px; padding: 8px; text-align: center; font-size: 15px; background: var(--paper); }
+.face b { display: block; font-size: 22px; color: var(--accent); font-family: ui-serif, Georgia, serif; }
+.contact { text-align: center; }
+.button { display: inline-block; background: var(--accent); color: #fff8ec; text-decoration: none; padding: 12px 22px; border-radius: 999px; font-weight: 600; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="die" aria-hidden="true"><i></i><span></span><i></i><span></span><i></i><span></span><i></i><span></span><i></i></div>
+    <div class="brand">DiceMate: Dice Chess</div>
+  </header>
+  <h1>Support</h1>
+  <p class="lede">Answers to common questions. Can't find yours? Write to <a href="mailto:claudiutigaroi@gmail.com">claudiutigaroi@gmail.com</a>.</p>
+
+  <h2 id="rules">How to play</h2>
+  <details open>
+    <summary>What are the rules?</summary>
+    <div>
+      <p>Chess with the normal board, pieces and starting position, but every turn starts with a roll of <strong>3 dice</strong>. Each die names a piece:</p>
+      <div class="faces">
+        <div class="face"><b>1</b>Pawn</div><div class="face"><b>2</b>Knight</div><div class="face"><b>3</b>Bishop</div>
+        <div class="face"><b>4</b>Rook</div><div class="face"><b>5</b>Queen</div><div class="face"><b>6</b>King</div>
+      </div>
+      <ul>
+        <li>Make one move per die, with a piece of the type it shows, in any order. The same piece may move more than once.</li>
+        <li>You must use <strong>as many dice as the position allows</strong>. The app only lights up the pieces you can move and explains when a move would leave a die unused.</li>
+        <li>There is <strong>no check and no checkmate</strong>. The king may stand in danger. You win by <strong>capturing the king</strong> (which always ends the game at once), when your opponent resigns, or when their time runs out.</li>
+        <li>Castling uses a king die and a rook die together.</li>
+        <li>Promotion is required (queen, rook, bishop or knight) and uses a pawn die. An en passant capture stays available during the whole next turn.</li>
+        <li>If no move is possible, your turn passes automatically.</li>
+        <li>A game is drawn after 100 moves in a row with no capture and no pawn move.</li>
+      </ul>
+      <p>The tutorial walks you through your first game in about two minutes.</p>
+    </div>
+  </details>
+  <details>
+    <summary>What is the Threat Meter?</summary>
+    <div><p>It shows the exact chance that your opponent can capture your king on their next turn, calculated over every possible roll. It is free in your first 10 casual games and always available with the DiceMate Club.</p></div>
+  </details>
+  <details>
+    <summary>What are the World Tour, the Daily Roll and Roll Puzzles?</summary>
+    <div>
+      <ul>
+        <li><strong>World Tour:</strong> 196 stops, one per country, each against an AI champion. Earn up to 3 stars per stop. Plays offline.</li>
+        <li><strong>Daily Roll:</strong> one game a day where every player gets the same dice. Score points, keep your streak and compare your score in your country and worldwide.</li>
+        <li><strong>Roll Puzzles:</strong> capture the king with the dice you are given. 3 puzzles a day are free; the Club makes them unlimited.</li>
+        <li><strong>Pass &amp; Play:</strong> two players on one iPhone.</li>
+      </ul>
+      <p>Every computer opponent is labelled AI.</p>
+    </div>
+  </details>
+
+  <h2 id="online">Online play</h2>
+  <details>
+    <summary>How do ratings and ranks work?</summary>
+    <div>
+      <p>Only games between people change your rating: quick match, rated rooms and rated challenges. The World Tour, the Daily Roll, puzzles and Pass &amp; Play never do.</p>
+      <ul>
+        <li>Before your first rated game, you choose a starting level once (400, 800, 1200 or 1600).</li>
+        <li>Ratings use the Glicko-2 system: beating a stronger player gains more, losing to a weaker one costs more.</li>
+        <li>Your first <strong>10 games are placement games</strong>: your rating moves quickly and is shown with a "?" until it settles.</li>
+        <li>Ranks are named after the pieces: Pawn, Knight, Bishop, Rook, Queen, King, and Grandmaster at the top.</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>What are the time controls?</summary>
+    <div><p>Online games are played live, with <strong>30 seconds, 1 minute or 2 minutes per turn</strong>. If your time runs out, your opponent can claim the win. Losing on time is always a loss.</p></div>
+  </details>
+  <details>
+    <summary>How do rooms and room codes work?</summary>
+    <div>
+      <ul>
+        <li>In Online, tap <strong>Create room</strong>, give it a name and pick the turn time, rated or casual, and whether anyone can join or only people with a password.</li>
+        <li>Each room gets a <strong>6-letter code</strong> (letters and digits, no look-alikes such as 0/O or 1/I). Share it, or the room's link, with a friend; they enter it under <strong>Join by code</strong>.</li>
+        <li>Open rooms also appear in the lobby's open games. Colours are drawn when the second player joins, and White moves first.</li>
+        <li>A room waits up to 30 minutes for a player, then closes.</li>
+      </ul>
+    </div>
+  </details>
+  <details>
+    <summary>How do I add friends and challenge them?</summary>
+    <div><p>Search for a username in Friends, send a request, and once it is accepted you can challenge your friend to a live game, rated or casual. A challenge waits 15 minutes for an answer. There is no chat: you can send preset emotes during a game.</p></div>
+  </details>
+  <details>
+    <summary>Someone is cheating or has an offensive name. What can I do?</summary>
+    <div><p>Open their profile and tap <strong>Report</strong>, or <strong>Block</strong> to stop them from finding or challenging you. We review every report.</p></div>
+  </details>
+
+  <h2 id="purchases">Purchases and the Club</h2>
+  <details>
+    <summary>What can I buy? Does anything change the dice?</summary>
+    <div><p>DiceMate is free. The Shop sells cosmetic boards, pieces and dice at a fixed price, and you can earn Pips by playing to unlock others. Pips are never sold. Nothing you buy changes the dice or your chances: no loot boxes, no paid rerolls, no ads.</p></div>
+  </details>
+  <details>
+    <summary>How do I restore my purchases?</summary>
+    <div><p>Purchases belong to your Apple Account. On a new iPhone, sign in with the same Apple Account, then tap <strong>Restore purchases</strong> in the Shop or in Settings. To bring back your progress and username too, use <strong>Sign in with Apple</strong> in Settings on both devices.</p></div>
+  </details>
+  <details>
+    <summary>What does the DiceMate Club include?</summary>
+    <div>
+      <ul>
+        <li>Full post-game analysis: every turn, the best turn for your roll, win-chance and luck graphs.</li>
+        <li>Unlimited coach hints in casual games (3 per game without the Club).</li>
+        <li>Unlimited Roll Puzzles.</li>
+        <li>The Threat Meter in every casual game.</li>
+        <li>Members-only Club Gold dice and Velvet board.</li>
+        <li>Family Sharing.</li>
+      </ul>
+      <p>The Club is monthly or yearly; the yearly plan may start with a free trial for new subscribers. It renews automatically until you cancel.</p>
+    </div>
+  </details>
+  <details>
+    <summary>How do I cancel the Club or ask for a refund?</summary>
+    <div><p>In DiceMate, go to <strong>Settings › Manage subscription</strong>, or on your iPhone open <strong>Settings › [your name] › Subscriptions</strong>. Cancel at least 24 hours before the renewal date. Refunds are handled by Apple: visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>.</p></div>
+  </details>
+
+  <h2 id="account">Account and privacy</h2>
+  <details>
+    <summary>Do I need an account?</summary>
+    <div><p>No sign-up is needed. DiceMate creates an anonymous account automatically so you can play online. Choose a username whenever you like. <strong>Sign in with Apple</strong> is optional and keeps your progress across devices; we never ask for your email.</p></div>
+  </details>
+  <details>
+    <summary>How do I delete my account?</summary>
+    <div>
+      <p>Open <strong>Settings</strong>, tap <strong>Delete my account</strong> and confirm. Your account, username, friends, online games, ratings and server progress are deleted for good, right away. Purchases stay with your Apple Account and can be restored later.</p>
+      <p><strong>Delete my local progress</strong> only clears what is stored on this iPhone. If you can no longer open the app, email us from the address below with your username. See the <a href="privacy.html">Privacy Policy</a> for details.</p>
+    </div>
+  </details>
+  <details>
+    <summary>My progress or purchase is missing.</summary>
+    <div><p>Check that you are online, then use <strong>Restore purchases</strong>. If you used Sign in with Apple on your old device, sign in with the same Apple Account in Settings. Still missing? Email us with your username and what you expected to see.</p></div>
+  </details>
+
+  <h2 id="contact">Contact</h2>
+  <div class="card contact">
+    <p style="margin-top:0">Questions, bugs, ideas or data requests: we usually answer within a few days.</p>
+    <a class="button" href="mailto:claudiutigaroi@gmail.com?subject=DiceMate%20support">claudiutigaroi@gmail.com</a>
+    <p style="margin-bottom:0; color: var(--muted); font-size: 15px">Please include your username, your iPhone model and the app version (shown in Settings).</p>
+  </div>
+
+  <footer>
+    <a href="index.html">DiceMate</a><a href="support.html">Support</a><a href="privacy.html">Privacy</a>
+    <div>© 2026 DiceMate. Dice Chess for iPhone.</div>
+  </footer>
+</div>
+</body>
+</html>
